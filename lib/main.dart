@@ -27,72 +27,168 @@ class _StartState extends State<Start> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        children: <Widget>[contendor()],
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[contendor()],
+        ),
       ),
     );
   }
 }
 
-
-Widget top(){
+Widget top() {
   return Container(
     margin: EdgeInsets.all(0),
     alignment: Alignment.center,
-    child: Image.network('https://www.pixelstalk.net/wp-content/uploads/2016/04/Abstract-minimalist-wallpaper-HD-desktop-download.png') ,
+    child: Image.network(
+        'https://www.pixelstalk.net/wp-content/uploads/2016/04/Abstract-minimalist-wallpaper-HD-desktop-download.png'),
   );
 }
 
-Widget Welcome(){
+Widget Welcome() {
   return Container(
-    alignment: Alignment.bottomLeft,
-    child: const Text(
-      "Welcome to Fashion Daily",
-        style:  TextStyle( color: Colors.grey,fontFamily: 'ProductSans', fontWeight: FontWeight.bold, fontSize: 15),
+    margin: EdgeInsets.only(left: 10.0),
+    alignment: Alignment.topLeft,
+    child: Column(
+      children: <Widget>[
+        Container(
+          child: const Text(
+            "Welcome  to Fashion Daily",
+            style: TextStyle(
+                color: Colors.grey,
+                fontFamily: 'ProductSans',
+                fontWeight: FontWeight.bold,
+                fontSize: 15),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.only(left: 0.0, top: 20.0),
+          alignment: Alignment.centerLeft,
+          child: const Text(
+            "Sing In",
+            style: TextStyle(
+                color: Colors.black,
+                fontFamily: 'ProductSans',
+                fontWeight: FontWeight.bold,
+                fontSize: 40),
+          ),
+        )
+      ],
     ),
   );
 }
 
-Widget hiText(){
+Widget infoHelp() {
   return Container(
-    alignment: Alignment.bottomLeft,
-    child: const Text(
-        "Sing In",
-      style: TextStyle(color: Colors.black, fontFamily: 'ProductSans', fontWeight: FontWeight.bold, fontSize: 40),
-    ),
-  );
-}
-
-Widget infoHelp(){
-  return Container(
+    margin: const EdgeInsets.only(bottom: 80.0, right: 20.0),
     alignment: Alignment.centerRight,
     child: const Text(
       "Help",
-          style: TextStyle(color: Colors.blueAccent, fontFamily: 'ProductSans', fontWeight: FontWeight.bold, fontSize: 15),
+      style: TextStyle(
+          color: Colors.blueAccent,
+          fontFamily: 'ProductSans',
+          fontWeight: FontWeight.bold,
+          fontSize: 15),
     ),
   );
 }
 
-
-
-Widget hiBox(){
+Widget hiBox() {
   return Container(
-    margin: EdgeInsets.all(20),
-    alignment: Alignment.centerLeft,
-    child: Stack(
-      children: <Widget> [Welcome(), hiText(), infoHelp()],
+    child: GridView.count(
+      crossAxisCount: 2,
+      children: <Widget>[Welcome(), infoHelp()],
     ),
   );
 }
 
-
-
-Widget contendor(){
+Widget Form() {
   return Container(
-   child: Column(
-     children: <Widget>[top(), hiBox()],
-   ),
+    child: Column(
+      children: <Widget>[
+        Flexible(
+            child: Container(
+          alignment: Alignment.centerLeft,
+          margin: EdgeInsets.only(left: 10.0, bottom: 0.0),
+          child: const Text(
+            "Phone Number",
+            style: TextStyle(
+                color: Colors.grey,
+                fontFamily: 'ProductSans',
+                fontWeight: FontWeight.bold,
+                fontSize: 15),
+          ),
+        )),
+        Flexible(
+            child: Container(
+          height: 50,
+          margin: EdgeInsets.only(left: 10.0, right: 10.0),
+          child: const TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Number',
+                  hintText: 'Enter your Number')),
+        )),
+        Flexible(
+            child: Container(
+          height: 100,
+          width: 500,
+          margin: EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
+          child: TextButton(
+            style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                primary: Colors.blueAccent),
+            child: Text(
+              "Sign In",
+              style: TextStyle(fontFamily: "ProductSans", color: Colors.white),
+            ),
+            onPressed: () {},
+          ),
+        )),
+        Flexible(
+            child: Container(
+          alignment: Alignment.center,
+          margin: EdgeInsets.only(top: 10),
+          child: const Text(
+            "or",
+            style: TextStyle(
+                color: Colors.blueAccent,
+                fontFamily: 'ProductSans',
+                fontWeight: FontWeight.bold,
+                fontSize: 15),
+          ),
+        )),
+        Flexible(
+            child: Container(
+              height: 100,
+              width: 500,
+              margin: EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: Colors.blueAccent),
+                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                    primary: Colors.white),
+                child: Text(
+                  "Google Sing in",
+                  style: TextStyle(fontFamily: "ProductSans", color: Colors.blueAccent),
+                ),
+                onPressed: () {},
+              ),
+            )),
+      ],
+    ),
   );
 }
 
-
+Widget contendor() {
+  return Container(
+    child: Column(
+      children: <Widget>[
+        top(),
+        SizedBox(height: 130, child: Flexible(child: hiBox())),
+        SizedBox(height: 300, child: Flexible(child: Form())),
+      ],
+    ),
+  );
+}
