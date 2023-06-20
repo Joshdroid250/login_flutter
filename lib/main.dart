@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'loginElements.dart';
+import 'pages/register.dart';
 
 void main() => runApp(PracticeApp());
 
@@ -182,39 +183,52 @@ Widget Form() {
   );
 }
 
-Widget RegisterText() {
-  return Container(
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Flexible(
+class RegisterText extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Flexible(
             child: Container(
-          child: const Text(
-            "Does't has any account?",
-            style: TextStyle(
-                fontFamily: 'ProductSans', color: Colors.grey, fontSize: 15),
+              child: const Text(
+                "Doesn't have an account?",
+                style: TextStyle(
+                  fontFamily: 'ProductSans',
+                  color: Colors.grey,
+                  fontSize: 15,
+                ),
+              ),
+            ),
           ),
-        )),
-        Flexible(
+          Flexible(
             child: Container(
               margin: EdgeInsets.only(left: 5.0),
-          child: GestureDetector(
-            onTap: (){
-
-            },
-            child: const Text(
-              "Register?",
-              style: TextStyle(
-                  fontFamily: 'ProductSans',
-                  color: Colors.blueAccent,
-                  fontSize: 15),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RegisterPage()),
+                  );
+                },
+                child: const Text(
+                  "Register?",
+                  style: TextStyle(
+                    fontFamily: 'ProductSans',
+                    color: Colors.blueAccent,
+                    fontSize: 15,
+                  ),
+                ),
+              ),
             ),
-          )
-        ))
-      ],
-    ),
-  );
+          ),
+        ],
+      ),
+    );
+  }
 }
+
 
 Widget contendor() {
   return Container(
