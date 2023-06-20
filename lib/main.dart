@@ -139,7 +139,7 @@ Widget Form() {
             style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                 primary: Colors.blueAccent),
-            child: Text(
+            child: const Text(
               "Sign In",
               style: TextStyle(fontFamily: "ProductSans", color: Colors.white),
             ),
@@ -161,21 +161,56 @@ Widget Form() {
         )),
         Flexible(
             child: Container(
-              height: 100,
-              width: 500,
-              margin: EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
-              child: OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                    side: BorderSide(color: Colors.blueAccent),
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                    primary: Colors.white),
-                child: Text(
-                  "Google Sing in",
-                  style: TextStyle(fontFamily: "ProductSans", color: Colors.blueAccent),
-                ),
-                onPressed: () {},
-              ),
-            )),
+          height: 100,
+          width: 500,
+          margin: EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
+          child: OutlinedButton(
+            style: OutlinedButton.styleFrom(
+                side: BorderSide(color: Colors.blueAccent),
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                primary: Colors.white),
+            child: const Text(
+              "Google Sing in",
+              style: TextStyle(
+                  fontFamily: "ProductSans", color: Colors.blueAccent),
+            ),
+            onPressed: () {},
+          ),
+        )),
+      ],
+    ),
+  );
+}
+
+Widget RegisterText() {
+  return Container(
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Flexible(
+            child: Container(
+          child: const Text(
+            "Does't has any account?",
+            style: TextStyle(
+                fontFamily: 'ProductSans', color: Colors.grey, fontSize: 15),
+          ),
+        )),
+        Flexible(
+            child: Container(
+              margin: EdgeInsets.only(left: 5.0),
+          child: GestureDetector(
+            onTap: (){
+
+            },
+            child: const Text(
+              "Register?",
+              style: TextStyle(
+                  fontFamily: 'ProductSans',
+                  color: Colors.blueAccent,
+                  fontSize: 15),
+            ),
+          )
+        ))
       ],
     ),
   );
@@ -187,7 +222,8 @@ Widget contendor() {
       children: <Widget>[
         top(),
         SizedBox(height: 130, child: Flexible(child: hiBox())),
-        SizedBox(height: 300, child: Flexible(child: Form())),
+        SizedBox(height: 250, child: Flexible(child: Form())),
+        SizedBox(height: 50, child: Flexible(child: RegisterText())),
       ],
     ),
   );
