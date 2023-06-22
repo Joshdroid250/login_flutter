@@ -37,6 +37,24 @@ class _StartState extends State<Start> {
   }
 }
 
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const RegisterPage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 1.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
 Widget top() {
   return Container(
     margin: EdgeInsets.all(0),
@@ -207,10 +225,7 @@ class RegisterText extends StatelessWidget {
               margin: EdgeInsets.only(left: 5.0),
               child: InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => RegisterPage()),
-                  );
+                  Navigator.of(context).push(_createRoute());
                 },
                 child: const Text(
                   "Register?",
