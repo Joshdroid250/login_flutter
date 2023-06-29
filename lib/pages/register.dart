@@ -40,7 +40,7 @@ AppBar myAppBar(BuildContext context) {
 Widget Welcome() {
   return Container(
     margin: EdgeInsets.only(left: 10.0),
-    alignment: Alignment.topLeft,
+    alignment: Alignment.centerLeft,
     child: Column(
       children: <Widget>[
         Container(
@@ -72,6 +72,8 @@ Widget Welcome() {
 
 Widget infoHelp() {
   return Container(
+    height: 100,
+    width: 150,
     margin: const EdgeInsets.only(bottom: 80.0, right: 20.0),
     alignment: Alignment.centerRight,
     child: const Text(
@@ -88,9 +90,8 @@ Widget infoHelp() {
 Widget hiBox() {
   return Container(
     padding: EdgeInsets.only(top: 30),
-    child: GridView.count(
-      crossAxisCount: 2,
-      children: <Widget>[Welcome(), infoHelp()],
+    child: Row(
+      children: <Widget>[Welcome()],
     ),
   );
 }
